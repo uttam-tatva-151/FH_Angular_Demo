@@ -1,0 +1,13 @@
+<div class="wrapper d-flex flex-column" style="height: 100vh; overflow: hidden;">
+  <!-- Main Navbar -->
+  <app-main-navbar (logoutEvent)="logout()"></app-main-navbar>
+
+  <!-- Second Navbar Below -->
+  <app-second-navbar></app-second-navbar>
+
+  <!-- Content Wrapper -->
+  <div class="content-wrapper" style="flex: 1; overflow-y: auto;">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

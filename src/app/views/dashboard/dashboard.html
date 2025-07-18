@@ -1,0 +1,36 @@
+<!-- Outer wrapper with top margin (assuming both navbars are ~112px total) -->
+<div class="d-flex">
+
+  <!-- Sidebar -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4"
+    style="width: 250px; min-height: 100vh; position: relative; ">
+    <a href="#" class="brand-link">
+      <span class="brand-text font-weight-light">AdminLTE</span>
+    </a>
+
+    <div class="sidebar">
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column">
+          <li class="nav-item">
+            <a routerLink="/dashboard" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Main Dashboard Content -->
+  <div class="flex-grow-1 p-3">
+    <div class="d-flex justify-content-start align-items-center">
+      <!-- Sidebar Toggle Button -->
+      <button class="btn btn-outline-secondary btn-sm mr-2" data-widget="pushmenu" type="button">
+        <i class="fas fa-bars"></i>
+      </button>
+      <h1 class="m-0">Dashboard</h1>
+    </div>
+    <p>Welcome to your dashboard content!</p>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<!-- Second Navbar Below -->
+<nav class="navbar navbar-expand-md navbar-light border-bottom shadow-sm second-navbar">
+  <div class="container-fluid">
+
+    <!-- Toggle button for small screens -->
+    <button class="navbar-toggler border-white text-white" type="button" data-toggle="collapse" data-target="#secondNavbar"
+      aria-controls="secondNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible navbar content -->
+    <div class="collapse navbar-collapse" id="secondNavbar">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+          <a routerLink="/dashboard" class="nav-link text-white">Dashboard</a>
+        </li>
+
+        <li class="nav-item dropdown dropdown-hover">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="reportsDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Admin
+          </a>
+          <div class="dropdown-menu second-navbar-dropdown" aria-labelledby="reportsDropdown">
+            <a class="dropdown-item text-white second-navbar-dropdown-link" target="_blank" routerLink="/screenbuilder/sbhome">ScreenBuilder</a>
+          </div>
+        </li>
+
+        <!-- <li class="nav-item dropdown dropdown-hover">
+          <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            class="nav-link dropdown-toggle text-white">Dropdown</a>
+          <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+            <li><a href="#" class="dropdown-item">Some action </a></li>
+            <li><a href="#" class="dropdown-item">Some other action</a></li>
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-submenu dropdown-hover">
+              <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false" class="dropdown-item dropdown-toggle">Hover for action</a>
+              <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
+                <li>
+                  <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
+                </li>
+                <li class="dropdown-submenu">
+                  <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
+                  <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
+                    <li><a href="#" class="dropdown-item">3rd level</a></li>
+                    <li><a href="#" class="dropdown-item">3rd level</a></li>
+                  </ul>
+                </li>
+                <li><a href="#" class="dropdown-item">level 2</a></li>
+                <li><a href="#" class="dropdown-item">level 2</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li> -->
+
+      </ul>
+    </div>
+  </div>
+</nav>

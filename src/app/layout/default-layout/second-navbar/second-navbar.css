@@ -1,0 +1,18 @@
+.dropdown-menu {
+  z-index: 1070 !important;
+}
+
+.second-navbar {
+  position: sticky;
+  z-index: 1055;
+  background-color: #354F74;
+  border-bottom: none !important;
+}
+
+.second-navbar-dropdown{
+  background-color: #354F74;
+}
+
+.second-navbar-dropdown-link:hover{
+  background-color: #253751;
+}
