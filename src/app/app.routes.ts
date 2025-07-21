@@ -11,23 +11,19 @@ import { entryGuard } from './guards/entry-guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-<<<<<<< HEAD
-  { path: '',
-    component:LoginLayout,
-    canActivate: [entryGuard],
-    children: [
-      {path: 'login', component: Login},
-      {path: 'forgotpassword', component: ForgotPassword}
-=======
-  // { path: 'login', component: Login},
   {
     path: '',
     component: LoginLayout,
+    canActivate: [entryGuard],
     children: [
       { path: 'login', component: Login },
-      { path: 'sign-up', loadComponent: () => import('./auth/sign-up/sign-up').then(m => m.SignUp) }
->>>>>>> 74d7ad579575fb83868934ece914e6ba50f550bf
-    ]
+      { path: 'forgotpassword', component: ForgotPassword },
+      {
+        path: 'sign-up',
+        loadComponent: () =>
+          import('./auth/sign-up/sign-up').then((m) => m.SignUp),
+      },
+    ],
   },
   {
     path: '',
@@ -35,14 +31,12 @@ export const routes: Routes = [
     children: [
       { path: 'dashboard', component: Dashboard },
       { path: 'home', component: Home },
-    ]
+    ],
   },
   {
     path: '',
     component: ScreenBuilderLayout,
-    children: [
-      { path: 'screenbuilder/sbhome', component: SbHome },
-    ]
+    children: [{ path: 'screenbuilder/sbhome', component: SbHome }],
   },
-  { path: '**', redirectTo: 'login', pathMatch: 'full' }
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
