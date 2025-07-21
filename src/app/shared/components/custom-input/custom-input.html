@@ -1,0 +1,60 @@
+<mat-form-field
+  [appearance]="customInput.appearance"
+  class="w-100 mt-3"
+  subscriptSizing="dynamic"
+>
+  <!-- label -->
+  <mat-label>{{ customInput.label }}</mat-label>
+
+  <!-- input field -->
+  @if(customInput.type === "text" || customInput.type === "number" ||
+  customInput.type === "email" || customInput.type === "password") {
+  <input
+    matInput
+    [type]="customInput.type"
+    [placeholder]="customInput.placeholder"
+    [value]="customInput.value"
+    (input)="onInput($event)"
+    (blur)="onTouched()"
+    [id]="customInput.id"
+    [name]="customInput.name"
+    [disabled]="customInput.disabled"
+    [class]="customInput.class"
+    autocomplete="off"
+  />
+  }
+
+  <!-- select list -->
+  @if(customInput.type === "select") {
+  <select
+    matNativeControl
+    [value]="customInput.value"
+    (selectionchange)="onSelect($event)"
+    [disabled]="customInput.disabled"
+    [id]="customInput.id"
+    [name]="customInput.name"
+  >
+    @for(option of customInput.options; track $index) {
+    <option [value]="option.value">{{ option.label }}</option>
+    }
+  </select>
+  }
+
+  <!-- icon -->
+  @if(customInput.icon){
+  <mat-icon matSuffix> {{ customInput.icon }} </mat-icon>
+  }
+
+  <!-- hint -->
+  @if(!customInput.disabled && customInput.hint){
+  <mat-hint>{{ customInput.hint }}</mat-hint>
+  }
+</mat-form-field>
+
+<!-- error messages -->
+@for (error of getErrorKeys(); track $index) { @if(formControl.invalid &&
+(formControl.touched || formControl.dirty)) {
+<mat-error>
+  {{ getErrorMessage(error) }}
+</mat-error>
+} }
