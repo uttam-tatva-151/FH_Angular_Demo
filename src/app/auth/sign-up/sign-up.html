@@ -1,0 +1,89 @@
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <h1 class="mb-3">Registeration</h1>
+
+  <!-- Username input -->
+  <app-custom-input
+    formControlName="userName"
+    [customInput]="{
+      appearance: 'outline',
+      label: 'Username',
+      type: 'text',
+      placeholder: 'Enter Username',
+      value: '',
+      id: 'userName',
+      name: 'userName',
+      disabled: false
+    }"
+    [formControl]="userNameControl"
+  >
+  </app-custom-input>
+
+  <!-- Firstname input -->
+  <app-custom-input
+    formControlName="firstName"
+    [customInput]="{
+      appearance: 'outline',
+      label: 'FirstName',
+      type: 'text',
+      placeholder: 'Enter Firstname',
+      value: '',
+      id: 'firstName',
+      name: 'firstName',
+      disabled: false
+    }"
+    [formControl]="firstNameControl"
+  >
+  </app-custom-input>
+
+  <!-- Lastname input -->
+  <app-custom-input
+    formControlName="lastName"
+    [customInput]="{
+      appearance: 'outline',
+      label: 'lastName',
+      type: 'text',
+      placeholder: 'Enter Lastname',
+      value: '',
+      id: 'lastName',
+      name: 'lastName',
+      disabled: false
+    }"
+    [formControl]="lastNameControl"
+  >
+  </app-custom-input>
+
+  <!-- Role select list -->
+  <app-custom-input
+    formControlName="role"
+    [customInput]="{
+      appearance: 'outline',
+      label: 'role',
+      type: 'select',
+      placeholder: '',
+      value: '',
+      id: 'role',
+      name: 'role',
+      disabled: false,
+      options:roles
+    }"
+    [formControl]="roleControl"
+  >
+  </app-custom-input>
+
+  <div class="text-center text-lg-start mt-4 pt-2">
+    <button
+      type="submit"
+      data-mdb-button-init
+      data-mdb-ripple-init
+      class="btn btn-primary btn-lg"
+      style="padding-left: 2.5rem; padding-right: 2.5rem"
+      [disabled]="signUpForm.invalid"
+    >
+      Sign Up
+    </button>
+    <p class="small fw-bold mt-2 pt-1 mb-0">
+      Already have an account?
+      <a routerLink="/login" class="link-danger">Login</a>
+    </p>
+  </div>
+</form>

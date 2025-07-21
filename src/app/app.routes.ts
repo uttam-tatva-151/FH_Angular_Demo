@@ -10,10 +10,12 @@ import { LoginLayout } from './layout/login-layout/login-layout/login-layout';
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   // { path: 'login', component: Login},
-  { path: '',
-    component:LoginLayout,
+  {
+    path: '',
+    component: LoginLayout,
     children: [
-      {path: 'login', component: Login}
+      { path: 'login', component: Login },
+      { path: 'sign-up', loadComponent: () => import('./auth/sign-up/sign-up').then(m => m.SignUp) }
     ]
   },
   {
