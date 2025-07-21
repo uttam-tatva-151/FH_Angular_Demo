@@ -8,14 +8,14 @@
     <input type="text" matInput formControlName="userName" placeholder="Enter Username">
     <mat-error *ngIf="loginForm.get('userName')?.touched && loginForm.get('userName')?.invalid" class="fs-6">
       <span *ngIf="loginForm.get('userName')?.hasError('required')">Username is required</span>
-      <!-- <span *ngIf="loginForm.get('email')?.hasError('notFound')">This email is not registered</span> -->
+      <span *ngIf="loginForm.get('userName')?.hasError('notFound')">There is no such user</span>
     </mat-error>
   </mat-form-field>
 
   <!-- Password input -->
   <mat-form-field class="w-100" appearance="outline">
     <mat-label>Password</mat-label>
-    <input type="password" matInput formControlName="password" placeholder="Enter Email" appTogglePassword>
+    <input type="password" matInput formControlName="password" placeholder="Enter Password" appTogglePassword>
     <mat-error *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="fs-6">
       <span *ngIf="loginForm.get('password')?.hasError('required')">Password is required</span>
     </mat-error>

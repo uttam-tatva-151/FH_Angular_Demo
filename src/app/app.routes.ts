@@ -7,12 +7,13 @@ import { SbHome } from './screenBuilderPages/sb-home/sb-home';
 import { Home } from './views/home/home';
 import { LoginLayout } from './layout/login-layout/login-layout/login-layout';
 import { ForgotPassword } from './auth/forgot-password/forgot-password';
+import { entryGuard } from './guards/entry-guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  // { path: 'login', component: Login},
   { path: '',
     component:LoginLayout,
+    canActivate: [entryGuard],
     children: [
       {path: 'login', component: Login},
       {path: 'forgotpassword', component: ForgotPassword}

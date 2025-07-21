@@ -11,7 +11,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { Observable } from 'rxjs';
+import {
+  catchError,
+  debounceTime,
+  distinctUntilChanged,
+  Observable,
+  of,
+  switchMap,
+} from 'rxjs';
 import { TogglePassword } from '../../directives/toggle-password';
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from '../../services/login-service/login-service';
@@ -49,10 +56,31 @@ export class Login {
       password: ['', Validators.required],
       rememberMe: [false],
     });
+
+    this.loginForm.get('userName')?.valueChanges.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      switchMap((userName: string) => {
+        if (!userName) return of(null);
+        return this.loginService.checkUserExists(userName).pipe(
+          catchError((err) => {
+            if (err.status === 404) {
+              this.loginForm.get('userName')?.setErrors({ notFound: true });
+            }
+            return of(null);
+          })
+        );
+      })
+    ).subscribe((res) => {
+      const control = this.loginForm.get('userName');
+      if (res?.statusCode === 200) {
+        control?.setErrors(null);
+      }
+    });
   }
 
   onSubmit(): void {
-    debugger
+    debugger;
     if (this.loginForm.invalid) return;
 
     this.loginService.login(this.loginForm.value).subscribe({
@@ -67,7 +95,7 @@ export class Login {
       error: (err) => {
         const msg = err.error?.message || 'Something went wrong';
         this.toastr.error(msg);
-      }
+      },
     });
   }
 }
