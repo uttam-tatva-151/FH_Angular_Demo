@@ -5,10 +5,17 @@ import { Dashboard } from './views/dashboard/dashboard';
 import { ScreenBuilderLayout } from './layout/screen-builder-layout/screen-builder-layout';
 import { SbHome } from './screenBuilderPages/sb-home/sb-home';
 import { Home } from './views/home/home';
+import { LoginLayout } from './layout/login-layout/login-layout/login-layout';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: Login},
+  // { path: 'login', component: Login},
+  { path: '',
+    component:LoginLayout,
+    children: [
+      {path: 'login', component: Login}
+    ]
+  },
   {
     path: '',
     component: DefaultLayout,

@@ -6,11 +6,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { TogglePassword } from '../../directives/toggle-password';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, FormsModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatIconModule],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatIconModule, MatIconModule, TogglePassword],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
@@ -19,7 +20,7 @@ export class Login {
 
   constructor(private fb: FormBuilder){
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      userName: ['', [Validators.required]],
       password: ['', Validators.required],
       remmemberMe: [false]
     })
