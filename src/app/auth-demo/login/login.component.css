@@ -1,0 +1,154 @@
+
+[right-panel] {
+  display: contents;
+}
+.loginPanelBgLogo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  background: url('../../../../public/assets/logo/FH_bg_logo.png') center center no-repeat;
+  background-size: 70% auto;
+  filter: grayscale(1) brightness(1.2);
+}
+
+.textLogin {
+  color: #8e71fb;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.inputBg {
+  background: #f4f7fa !important;
+  border: none !important;
+  border-radius: 1.3em !important;
+  color: #333;
+  box-shadow: none !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+.inputBg:focus {
+  background: #e5eafd !important;
+  box-shadow: 0 0 0 2px #8e71fb22 !important;
+}
+
+.inputGroupTextIconInput {
+  background: #f4f7fa;
+  border: none;
+  border-radius: 1.3em;
+  color: #8e71fb;
+  font-size: 1.1em;
+}
+
+.passwordInputGroup {
+  position: relative;
+}
+.eyeBtn {
+  border: none;
+  background: none;
+  color: #8e71fb;
+  font-size: 1.2em;
+  position: absolute;
+  right: 12px;
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 1;
+  padding: 0 0.3em;
+  cursor: pointer;
+  transition: color 0.18s;
+}
+.eyeBtn:focus,
+.eyeBtn:hover {
+  color: #ffb86c;
+  background: none;
+}
+
+.remembermeToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.remembermeSwitch {
+  display: inline-block;
+  width: 32px;
+  height: 18px;
+  position: relative;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.remembermeSwitch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #e1e1f7;
+  border-radius: 16px;
+  transition: background 0.24s cubic-bezier(.4,2,.4,1), box-shadow 0.18s;
+  box-shadow: 0 2px 5px #8e71fb22;
+}
+.remembermeCheckbox:checked + .remembermeSwitch .slider {
+  background: linear-gradient(90deg,#8e71fb,#ffb86c 85%);
+  box-shadow: 0 2px 10px #ffb86c55;
+}
+.remembermeSwitch .slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 3px;
+  bottom: 2.5px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px #8e71fb22;
+  transition: transform 0.24s cubic-bezier(.4,2,.4,1);
+}
+.remembermeCheckbox:checked + .remembermeSwitch .slider:before {
+  transform: translateX(14px) scale(1.09) rotate(18deg);
+  background: #fff8e6;
+}
+.remembermeLabel {
+  color: #8e71fb;
+  font-weight: 600;
+  font-size: 0.98em;
+  user-select: none;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+}
+
+.formCheckInput:checked {
+  background-color: #8e71fb;
+  border-color: #ffb86c;
+}
+
+.formCheckLabel {
+  color: #888;
+  font-size: 0.96rem;
+}
+
+/* Animated Circles */
+#loginAnimCircles {
+  position: absolute;
+  z-index: 0;
+  left: -400px;
+  top: -70px;
+  pointer-events: none;
+  width: 560px;
+  height: 350px;
+}
+#loginAnimCircles .circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 0.22;
+  will-change: transform, opacity, background;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .loginPanelBgLogo { border-radius: 0; }
+}
+@media (max-width: 767px) {
+  .loginPanelBgLogo { border-radius: 0 !important; min-height: 180px;}
+  #loginAnimCircles { left: -20px; top: 10px; }
+}

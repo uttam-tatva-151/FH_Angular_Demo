@@ -1,0 +1,19 @@
+#animatedCircles {
+  position: absolute;
+  z-index: 1;
+  left: -300px;
+  top: 20px;
+  pointer-events: none;
+  width: 560px;
+  height: 350px;
+}
+#animatedCircles .circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 0.22;
+  will-change: transform, opacity, background;
+}
+@media (max-width: 767px) {
+  #animatedCircles { left: -20px; top: 10px; }
+}

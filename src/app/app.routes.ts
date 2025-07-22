@@ -9,6 +9,7 @@ import { LoginLayout } from './layout/login-layout/login-layout/login-layout';
 import { entryGuard } from './guards/entry-guard';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
+import { authRoutes } from './auth-demo/auth-routing.module';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -39,6 +40,10 @@ export const routes: Routes = [
     path: '',
     component: ScreenBuilderLayout,
     children: [{ path: 'screenbuilder/sbhome', component: SbHome }],
+  },
+  {
+    path: 'auth-demo',
+    children: authRoutes
   },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];

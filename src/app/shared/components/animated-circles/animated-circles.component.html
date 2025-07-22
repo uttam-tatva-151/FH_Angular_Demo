@@ -1,0 +1,14 @@
+<div id="animatedCircles">
+  <div
+    *ngFor="let c of circlesConfig; let i = index"
+    class="circle"
+    [ngStyle]="{
+      width: c[0] + 'px',
+      height: c[0] + 'px',
+      left: c[1] + 'px',
+      top: c[2] + 'px',
+      background: 'linear-gradient(135deg, ' + c[3] + ', ' + c[4] + ')',
+      animation: 'floatCircle' + i + ' ' + c[5] + 's ease-in-out ' + c[6] + 's infinite alternate'
+    }"
+  ></div>
+</div>

@@ -1,0 +1,15 @@
+<button
+  [type]="type"
+  [class]="btnClass"
+  [ngClass]="extraClasses"
+  [disabled]="disabled || loading"
+  (click)="onClick.emit($event)"
+>
+  <ng-container *ngIf="!loading; else spinnerTpl">
+    <ng-content></ng-content>
+    <span *ngIf="!hasContent">{{ label }}</span>
+  </ng-container>
+  <ng-template #spinnerTpl>
+    <span class="spinner-border spinner-border-sm"></span>
+  </ng-template>
+</button>

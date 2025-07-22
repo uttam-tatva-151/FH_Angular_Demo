@@ -1,0 +1,16 @@
+<h1 class="fw-bold mb-2 infoTitleLight">
+  {{ titlePrefix }} <span class="brandGradient"
+    >{{ titleHighlight }}</span>
+</h1>
+<h6 class="mb-3 text-muted domainLight">
+  {{ subtitle }}
+</h6>
+<p class="mb-0 text-muted fs-6">
+  {{ description }}
+</p>
+<ul *ngIf="list?.length" class="mb-3 ps-4 text-muted fs-6">
+  <li *ngFor="let item of list" [innerHTML]="item"></li>
+</ul>
+<div class="infoShapesLight">
+  <div class="extra"></div>
+</div>

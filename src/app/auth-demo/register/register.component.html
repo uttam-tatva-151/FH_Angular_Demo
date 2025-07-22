@@ -1,0 +1,95 @@
+<app-modern-card>
+  <!-- Left Info Panel -->
+  <div left-panel>
+    <app-info-panel [titlePrefix]="'Join'" [titleHighlight]="'CashCanvas'"
+      [subtitle]="'Create your free account and start managing your finances smarter.'"
+      [description]="'Sign up in less than a minute and take control of your money!'" [list]="[
+          'Track expenses with ease',
+          'Secure & private',
+          'All your finances in one place',
+          'Free updates and support'
+          ]"></app-info-panel>
+  </div>
+  <!-- Right Register Panel -->
+  <div right-panel>
+    <div class="registerPanelBgLogo"></div>
+    <div class="w-100" style="max-width: 400px;">
+      <div class="d-flex align-items-center justify-content-center mb-4 gap-2">
+        <img src="assets/logo/FH_logo.png" alt="CashCanvas Logo" class="img-fluid ms-2"
+          style="max-width: 44px; height: 44px; border-radius: 50%; box-shadow: 0 2px 8px #8e71fb22; background: #eaeaea;" />
+        <h6 class="text-center textLogin animate__animated animate__fadeInDown fs-6 mb-0">USER REGISTER</h6>
+        <button *ngIf="passwordErrors.length > 0 && !showPasswordErrorPopup && passwordTouched"
+          type="button"
+          class="btn btn-sm btn-outline-danger ms-2"
+          (click)="showPasswordErrorsPopupBtn()"
+        >
+          <i class="bi bi-exclamation-triangle-fill"></i>
+        </button>
+      </div>
+      <form [formGroup]="registerForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="mb-3 input-group">
+          <span class="input-group-text inputGroupTextIconInput"><i class="bi bi-person"></i></span>
+          <input type="text" class="form-control form-control-lg inputBg" formControlName="userName"
+            placeholder="User Name" required [ngClass]="{'is-invalid': registerForm.get('userName')?.invalid && registerForm.get('userName')?.touched}" />
+          <div *ngIf="registerForm.get('userName')?.invalid && registerForm.get('userName')?.touched" class="invalid-feedback w-100 text-start">
+            Please enter a valid user name.
+          </div>
+        </div>
+        <div class="mb-3 input-group">
+          <span class="input-group-text inputGroupTextIconInput"><i class="bi bi-envelope"></i></span>
+          <input type="email" class="form-control form-control-lg inputBg" formControlName="email"
+            placeholder="Email address" required [ngClass]="{'is-invalid': registerForm.get('email')?.invalid && registerForm.get('email')?.touched}" />
+          <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="invalid-feedback w-100 text-start">
+            Please enter a valid email address.
+          </div>
+        </div>
+        <div class="mb-3 input-group passwordInputGroup">
+          <span class="input-group-text inputGroupTextIconInput"><i class="bi bi-lock"></i></span>
+          <input [type]="showPassword ? 'text' : 'password'" minlength="8" maxlength="20" class="form-control form-control-lg inputBg z-1"
+            formControlName="password" placeholder="Password (min 8 chars)" required
+            (input)="onPasswordInput()" [ngClass]="{'is-invalid': (registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || passwordTouched))}" />
+          <button type="button" tabindex="-1" class="btn eyeBtn input-group-text"
+            (click)="togglePassword()" aria-label="Show password">
+            <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+          </button>
+        </div>
+
+        <!-- Password Error Side Popup -->
+        <div *ngIf="showPasswordErrorPopup && passwordErrors.length > 0" class="passwordErrorPopup">
+          <div class="popupHeader">
+            <span>Password Errors</span>
+            <button type="button" class="closeBtn" (click)="closePasswordErrorPopup()">&times;</button>
+          </div>
+          <ul>
+            <li *ngFor="let err of passwordErrors">{{err}}</li>
+          </ul>
+        </div>
+
+        <div
+          class="d-flex justify-content-between align-items-center mb-3 animate__animated animate__fadeIn animate__delay-1s">
+          <div class="remembermeToggle">
+            <input class="remembermeCheckbox" type="checkbox" id="registerTerms"
+              formControlName="termsAccepted" hidden>
+            <label class="remembermeSwitch" for="registerTerms">
+              <span class="slider"></span>
+            </label>
+            <label class="remembermeLabel ms-2 mb-0" for="registerTerms">
+              I accept the <a href="/terms" class="hyperLink" target="_blank">T&C</a>
+            </label>
+          </div>
+          <a (click)="toForgotPassword()" class="hyperLink small" style="cursor:pointer">Forgot password?</a>
+        </div>
+        <div *ngIf="registerForm.get('termsAccepted')?.invalid && registerForm.get('termsAccepted')?.touched" class="invalid-feedback w-100 text-start mb-2 d-block">
+          You must accept the Terms & Conditions.
+        </div>
+        <app-btn-submit label="REGISTER" btnClass="btn submitBtn w-100 mb-2" type="submit"
+          [disabled]="!registerForm.get('termsAccepted')?.value || registerLoading" [loading]="registerLoading">
+        </app-btn-submit>
+        <div class="text-center">
+          <a (click)="toLogin()" class="hyperLink small" style="cursor:pointer">I Already have an account</a>
+        </div>
+      </form>
+    </div>
+    <app-animated-circles></app-animated-circles>
+  </div>
+</app-modern-card>
